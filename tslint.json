@@ -1,0 +1,8 @@
+{
+  "extends": "tslint-config-airbnb",
+  "rules": {
+    "import-name": [false, { "react": "React", "react-dom": "ReactDOM" }],
+    "trailing-comma": false,
+    "ter-arrow-parens": false
+  }
+}

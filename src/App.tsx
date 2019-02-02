@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+import TitleBar from './elements/TitleBar';
+import { ThemeProvider } from './styles/ThemeProvider';
 
 class App extends Component {
   render() {
     return (
-      <div>app</div>
+      <ThemeProvider>
+        <TitleBar/>
+        <div>app</div>
+      </ThemeProvider>
     );
   }
 }

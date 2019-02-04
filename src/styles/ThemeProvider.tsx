@@ -1,4 +1,4 @@
-import React, { ComponentClass, PureComponent } from 'react';
+import React, { ComponentClass, PureComponent, ReactNode } from 'react';
 import { ITheme, theme } from './themes/Theme';
 
 const { EventEmitter } = require('events');
@@ -23,7 +23,12 @@ export const themeConfig = new ThemeConfig();
  * **Example**: If you want all you buttons to be red, instead of writing <Button color="red" />
  * all the time, you might want to set the "primary" color of your theme to red.
  **/
-export class ThemeProvider extends PureComponent {
+
+interface Props {
+  children: ReactNode[];
+}
+
+export class ThemeProvider extends PureComponent<Props> {
   componentDidMount(): void {
     themeConfig.addListener('theme', this.onThemeChange);
   }

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
+import { FlexBox } from '../common-elements/FlexBox';
 import { darkTheme } from '../styles/themes/DarkTheme';
 import { ITheme, theme } from '../styles/themes/Theme';
 import { themeConfig, withTheme } from '../styles/ThemeProvider';
@@ -11,9 +12,10 @@ const baseStyles = css({
   boxSizing: 'border-box'
 });
 
-interface Props {
+type Props = {
   theme: ITheme;
-}
+  children?: ReactNode;
+};
 
 class TitleBar extends Component<Props> {
   isDarkTheme = false;
@@ -35,10 +37,10 @@ class TitleBar extends Component<Props> {
       });
 
     return (
-      <div {...styles}>
+      <FlexBox styles={styles} layout="row" align="space-between center">
         <span>Game board</span>
         <button onClick={this.toggleTheme}>Toggle theme</button>
-      </div>
+      </FlexBox>
     );
   }
 }

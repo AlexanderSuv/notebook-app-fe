@@ -1,5 +1,5 @@
 import React, { Component, ReactNode } from 'react';
-import { FlexBox } from '../common-elements/FlexBox';
+import { FlexBox } from '../ui-kit/FlexBox';
 import { darkTheme } from '../styles/themes/DarkTheme';
 import { ITheme, theme } from '../styles/themes/Theme';
 import { themeConfig, withTheme } from '../styles/ThemeProvider';

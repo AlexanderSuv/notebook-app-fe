@@ -1,16 +1,8 @@
 import React, { Component, ReactNode } from 'react';
-import { FlexBox } from '../ui-kit/FlexBox';
 import { darkTheme } from '../styles/themes/DarkTheme';
 import { ITheme, theme } from '../styles/themes/Theme';
 import { themeConfig, withTheme } from '../styles/ThemeProvider';
-import { css } from 'glamor';
-
-const baseStyles = css({
-  height: '75px',
-  color: 'white',
-  padding: '1rem',
-  boxSizing: 'border-box'
-});
+import ToolBar from '../ui-kit/ToolBar';
 
 type Props = {
   theme: ITheme;
@@ -27,20 +19,14 @@ class TitleBar extends Component<Props> {
       themeConfig.setTheme(theme);
     }
     this.isDarkTheme = !this.isDarkTheme;
-  };
+  }
 
   render(): React.ReactNode {
-    const styles = css(baseStyles,
-      {
-        backgroundColor: this.props.theme.primary.main,
-        color: this.props.theme.primary.text
-      });
-
     return (
-      <FlexBox styles={styles} layout="row" align="space-between center">
-        <span>Game board</span>
+      <ToolBar>
+        <span>Notes</span>
         <button onClick={this.toggleTheme}>Toggle theme</button>
-      </FlexBox>
+      </ToolBar>
     );
   }
 }

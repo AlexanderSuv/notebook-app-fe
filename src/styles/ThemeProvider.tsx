@@ -48,9 +48,17 @@ export class ThemeProvider extends PureComponent<Props> {
   }
 }
 
-export const withTheme = (mapThemeToProps?: (theme: ITheme, props: any) => any, displayName?: string) =>
-  (WrappedComponent: ComponentClass<any, any>) =>
-    class extends PureComponent {
+interface IWithThemeProps {
+  theme: ITheme;
+}
+
+interface OWithThemeProps {
+  theme?: ITheme;
+}
+
+export const withTheme = <T extends IWithThemeProps>(mapThemeToProps?: (theme: ITheme, props: any) => any, displayName?: string) =>
+  (WrappedComponent: ComponentClass<T>) =>
+    class WithTheme extends PureComponent<Pick<T, Exclude<keyof T, 'theme'>> & OWithThemeProps> {
       // @ts-ignore
       static displayName = displayName || WrappedComponent.displayName;
       static component = WrappedComponent;

@@ -80,7 +80,7 @@ export class FlexBox extends PureComponent<Props> {
       alignCss,
       { flexDirection: this.props.layout }
     );
-  };
+  }
 
   render(): ReactNode {
     return <div {...this.props.styles} {...this.buildStyles()}>{this.props.children}</div>;

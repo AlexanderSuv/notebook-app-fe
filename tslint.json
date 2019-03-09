@@ -8,6 +8,7 @@
         "react-dom": "ReactDOM"
       }
     ],
+    "ter-indent": false,
     "trailing-comma": false,
     "ter-arrow-parens": false,
     "function-name": false,

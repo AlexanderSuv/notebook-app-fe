@@ -1,6 +1,10 @@
 {
-  "extends": "tslint-config-airbnb",
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint-react-hooks"
+  ],
   "rules": {
+    "react-hooks-nesting": "error",
     "import-name": [
       false,
       {

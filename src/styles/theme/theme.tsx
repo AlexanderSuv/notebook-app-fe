@@ -1,20 +1,25 @@
 import { createMuiTheme, Theme } from '@material-ui/core';
-import { blue } from '@material-ui/core/colors';
+import { blue, deepOrange, deepPurple, pink } from '@material-ui/core/colors';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import React, { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
 
-const defaultTheme = createMuiTheme({
-  typography: {
-    useNextVariants: true,
-  }
-});
-
-export const secondaryTheme = createMuiTheme({
+export const blueTheme = createMuiTheme({
   typography: {
     useNextVariants: true,
   },
   palette: {
-    primary: blue
+    primary: blue,
+    secondary: pink
+  },
+});
+
+export const deepPurpleTheme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+  palette: {
+    primary: deepPurple,
+    secondary: deepOrange
   },
 });
 
@@ -27,7 +32,7 @@ type Props = {
 };
 
 export function AppTheme(props: Props) {
-  const [theme, setTheme] = useState(defaultTheme);
+  const [theme, setTheme] = useState(blueTheme);
 
   return (
     <ThemeProvider theme={theme}>

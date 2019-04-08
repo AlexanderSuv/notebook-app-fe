@@ -1,8 +1,6 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
-import { ColorizeOutlined } from '@material-ui/icons';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import React, { useContext } from 'react';
-import { SetThemeContext, deepPurpleTheme } from '../styles/theme/theme';
+import React from 'react';
 import { ThemePicker } from './ThemePicker';
 
 const useStyles = makeStyles(theme => {
@@ -25,11 +23,6 @@ const useStyles = makeStyles(theme => {
 
 export function Header() {
   const classes = useStyles();
-  const setTheme = useContext(SetThemeContext);
-
-  function toggleTheme() {
-    setTheme(deepPurpleTheme);
-  }
 
   return (
     <AppBar position={'static'} color={'primary'}>
@@ -37,9 +30,6 @@ export function Header() {
         <Typography variant="h6" color="inherit" className={classes.grow}>
           Notes
         </Typography>
-        <IconButton color="secondary" aria-label="Change theme" onClick={toggleTheme}>
-          <ColorizeOutlined/>
-        </IconButton>
         <ThemePicker/>
       </Toolbar>
     </AppBar>

@@ -1,36 +1,14 @@
-import { ColorizeOutlined } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
+import { ColorizeOutlined, Done } from '@material-ui/icons';
+import { makeStyles, ThemeProvider, useTheme } from '@material-ui/styles';
 import React, { useContext, useState } from 'react';
-import { Avatar, ClickAwayListener, Grid, IconButton, Paper, Popover, Theme } from '@material-ui/core';
-import { blueTheme, deepPurpleTheme, SetThemeContext } from '../styles/theme/theme';
+import { ClickAwayListener, Fab, Grid, IconButton, Paper, Popover, Theme } from '@material-ui/core';
+import { blueDarkTheme, blueTheme, deepPurpleDarkTheme, deepPurpleTheme, SetThemeContext } from '../styles/theme/theme';
 
-const useStyles = makeStyles(theme => {
-  return {
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      overflow: 'hidden',
-      backgroundColor: theme.palette.background.paper,
-    },
-    themeButton: {
-      margin: 10,
-      cursor: 'pointer'
-    },
-    blueTheme: {
-      backgroundColor: blueTheme.palette.primary.main
-    },
-    deepPurpleTheme: {
-      backgroundColor: deepPurpleTheme.palette.primary.main
-    },
-    gridList: {
-      width: 'auto',
-      height: 'auto',
-    },
-    menu: {
-      margin: '6px'
-    }
-  };
+const useStyles = makeStyles({
+  themeButton: {
+    margin: 5,
+    cursor: 'pointer'
+  }
 });
 
 export function ThemePicker() {
@@ -38,6 +16,7 @@ export function ThemePicker() {
   const open = Boolean(anchorEl);
   const classes = useStyles();
   const setTheme = useContext(SetThemeContext);
+  const theme = useTheme();
 
   function handleClose() {
     setAnchorEl(null);
@@ -49,8 +28,7 @@ export function ThemePicker() {
   }
 
   return (
-    <div>
-
+    <>
       <IconButton color="secondary"
                   aria-label="Change theme"
                   aria-owns={open ? 'fade-menu' : undefined}
@@ -63,26 +41,40 @@ export function ThemePicker() {
         <ClickAwayListener onClickAway={handleClose}>
           <Paper>
             <Grid container>
-              <Grid item xs aria-label={'blue-theme'}>
-                <Avatar aria-label="blue-theme" className={`${classes.blueTheme} ${classes.themeButton}`} onClick={() => setThemeAndClose(blueTheme)}/>
+              <Grid item xs>
+                <ThemeProvider theme={blueTheme}>
+                  <Fab className={classes.themeButton} size={'small'} color={'primary'} onClick={() => setThemeAndClose(blueTheme)}>
+                    {theme === blueTheme ? <Done/> : <></>}
+                  </Fab>
+                </ThemeProvider>
               </Grid>
-              <Grid item xs aria-label={'deep-purple-theme'}>
-                <Avatar aria-label="deep-purple-theme" className={`${classes.deepPurpleTheme} ${classes.themeButton}`}
-                        onClick={() => setThemeAndClose(deepPurpleTheme)}/>
+              <Grid item xs>
+                <ThemeProvider theme={deepPurpleTheme}>
+                  <Fab className={classes.themeButton} size={'small'} color={'primary'} onClick={() => setThemeAndClose(deepPurpleTheme)}>
+                    {theme === deepPurpleTheme ? <Done/> : <></>}
+                  </Fab>
+                </ThemeProvider>
               </Grid>
             </Grid>
             <Grid container>
-              <Grid item xs aria-label={'blue-theme-1'}>
-                <Avatar aria-label="blue-theme" className={`${classes.blueTheme} ${classes.themeButton}`} onClick={() => setThemeAndClose(blueTheme)}/>
+              <Grid item xs>
+                <ThemeProvider theme={blueDarkTheme}>
+                  <Fab className={classes.themeButton} size={'small'} color={'primary'} onClick={() => setThemeAndClose(blueDarkTheme)}>
+                    {theme === blueDarkTheme ? <Done/> : <></>}
+                  </Fab>
+                </ThemeProvider>
               </Grid>
-              <Grid item xs aria-label={'deep-purple-theme-1'}>
-                <Avatar aria-label="deep-purple-theme" className={`${classes.deepPurpleTheme} ${classes.themeButton}`}
-                        onClick={() => setThemeAndClose(deepPurpleTheme)}/>
+              <Grid item xs>
+                <ThemeProvider theme={deepPurpleDarkTheme}>
+                  <Fab className={classes.themeButton} size={'small'} color={'primary'} onClick={() => setThemeAndClose(deepPurpleDarkTheme)}>
+                    {theme === deepPurpleDarkTheme ? <Done/> : <></>}
+                  </Fab>
+                </ThemeProvider>
               </Grid>
             </Grid>
           </Paper>
         </ClickAwayListener>
       </Popover>
-    </div>
+    </>
   );
 }

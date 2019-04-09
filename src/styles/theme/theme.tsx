@@ -13,6 +13,17 @@ export const blueTheme = createMuiTheme({
   },
 });
 
+export const blueDarkTheme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+  palette: {
+    primary: blue,
+    secondary: pink,
+    type: 'dark'
+  },
+});
+
 export const deepPurpleTheme = createMuiTheme({
   typography: {
     useNextVariants: true,
@@ -20,6 +31,17 @@ export const deepPurpleTheme = createMuiTheme({
   palette: {
     primary: deepPurple,
     secondary: deepOrange
+  },
+});
+
+export const deepPurpleDarkTheme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+  palette: {
+    primary: deepPurple,
+    secondary: deepOrange,
+    type: 'dark'
   },
 });
 
